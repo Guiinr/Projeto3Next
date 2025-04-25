@@ -5,12 +5,35 @@ import { FaShoppingCart, FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import Image from 'next/image'
 import styles from './Shop.module.css'
 
-// Lista de produtos
-const PRODUCTS = [
-  { id: 1, name: "Produto 1", price: "R$ 99,99", image: "/assets/arte.png", category: "arte-digital" },
-  { id: 2, name: "Produto 2", price: "R$ 149,99", image: "/assets/fotografia.jpg", category: "pintura" },
-  { id: 3, name: "Produto 3", price: "R$ 199,99", image: "/assets/escultura.jpg", category: "fotografia" },
-  // Adicione os outros produtos conforme necessário
+interface Product {
+  id: number
+  name: string
+  price: string
+  image: string
+  category: string
+}
+
+const PRODUCTS: Product[] = [
+  { id: 1, name: "Produto 1", price: "R$ 99,99", image: "/assets/product3.jpg", category: "arte-digital" },
+  { id: 2, name: "Produto 2", price: "R$ 149,99", image: "/assets/product3.jpg", category: "pintura" },
+  { id: 3, name: "Produto 3", price: "R$ 199,99", image: "/assets/product3.jpg", category: "fotografia" },
+  { id: 4, name: "Produto 4", price: "R$ 249,99", image: "/assets/product3.jpg", category: "escultura" },
+  { id: 5, name: "Produto 5", price: "R$ 99,99", image: "/assets/product3.jpg", category: "arte-digital" },
+  { id: 6, name: "Produto 6", price: "R$ 149,99", image: "/assets/product3.jpg", category: "pintura" },
+  { id: 7, name: "Produto 7", price: "R$ 199,99", image: "/assets/product3.jpg", category: "fotografia" },
+  { id: 8, name: "Produto 8", price: "R$ 249,99", image: "/assets/product3.jpg", category: "escultura" },
+  { id: 9, name: "Produto 9", price: "R$ 99,99", image: "/assets/product3.jpg", category: "arte-digital" },
+  { id: 10, name: "Produto 10", price: "R$ 149,99", image: "/assets/product3.jpg", category: "pintura" },
+  { id: 11, name: "Produto 11", price: "R$ 199,99", image: "/assets/product3.jpg", category: "fotografia" },
+  { id: 12, name: "Produto 12", price: "R$ 249,99", image: "/assets/product3.jpg", category: "escultura" },
+  { id: 13, name: "Produto 13", price: "R$ 99,99", image: "/assets/product3.jpg", category: "arte-digital" },
+  { id: 14, name: "Produto 14", price: "R$ 149,99", image: "/assets/product3.jpg", category: "pintura" },
+  { id: 15, name: "Produto 15", price: "R$ 199,99", image: "/assets/product3.jpg", category: "fotografia" },
+  { id: 16, name: "Produto 16", price: "R$ 249,99", image: "/assets/product3.jpg", category: "escultura" },
+  { id: 17, name: "Produto 17", price: "R$ 99,99", image: "/assets/product3.jpg", category: "arte-digital" },
+  { id: 18, name: "Produto 18", price: "R$ 149,99", image: "/assets/product3.jpg", category: "pintura" },
+  { id: 19, name: "Produto 19", price: "R$ 199,99", image: "/assets/product3.jpg", category: "fotografia" },
+  { id: 20, name: "Produto 20", price: "R$ 249,99", image: "/assets/product3.jpg", category: "escultura" },
 ]
 
 const PRODUCTS_PER_PAGE = 12
@@ -18,8 +41,8 @@ const PRODUCTS_PER_PAGE = 12
 export default function Shop() {
   const [currentPage, setCurrentPage] = useState(1)
   const [selectedCategory, setSelectedCategory] = useState("todos")
-  const [visibleProducts, setVisibleProducts] = useState([])
-  const [cartItems, setCartItems] = useState([])
+  const [visibleProducts, setVisibleProducts] = useState<Product[]>([])
+  const [cartItems, setCartItems] = useState<number[]>([])
 
   const filteredProducts = useMemo(() => {
     return selectedCategory === "todos"
@@ -86,11 +109,16 @@ export default function Shop() {
             >
               <div className={styles.productImageContainer}>
                 <Image 
-                  src={product.image} 
+                  src={product.image}
                   alt={product.name}
                   width={250}
                   height={250}
                   className={styles.productImage}
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement
+                    target.onerror = null
+                    target.src = '/assets/placeholder.jpg'
+                  }}
                 />
                 <button 
                   className={styles.addToCartBtn}

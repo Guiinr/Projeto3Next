@@ -23,20 +23,20 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
           <RiCloseLine />
         </button>
       </div>
-      
+
       <div className={styles.sidebarContent}>
         <div className={styles.sidebarSection}>
           <Link href="/about" className={styles.sidebarButton} onClick={onClose}>
             Sobre Nós
           </Link>
         </div>
-        
+
         <div className={styles.sidebarSection}>
           <Link href="/shop" className={styles.sidebarButton} onClick={onClose}>
             Shop
           </Link>
         </div>
-        
+
         <div className={styles.sidebarSection}>
           <Link href="/contact" className={styles.sidebarButton} onClick={onClose}>
             Contato
@@ -51,14 +51,14 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
             Carrinho
           </Link>
         </div>
-        
+
         <div className={styles.sidebarSection}>
-          <Link href="/my-orders" className={styles.sidebarButton} onClick={onClose}>
+          <Link href="/orders" className={styles.sidebarButton} onClick={onClose}>
             <RiListCheck className={styles.sidebarIcon} />
             Meus Pedidos
           </Link>
         </div>
-        
+
         <div className={styles.sidebarSection}>
           <Link href="/my-address" className={styles.sidebarButton} onClick={onClose}>
             <RiHomeLine className={styles.sidebarIcon} />
@@ -67,8 +67,8 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
         </div>
 
         <div className={`${styles.sidebarSection} ${styles.sidebarSectionLogout}`}>
-          <button 
-            className={`${styles.sidebarButton} ${styles.sidebarButtonLogout}`} 
+          <button
+            className={`${styles.sidebarButton} ${styles.sidebarButtonLogout}`}
             onClick={handleLogout}
           >
             <RiLogoutBoxLine className={styles.sidebarIcon} />

@@ -28,7 +28,7 @@ const HeaderPages = () => {
         <nav>
           <div className={styles.navContainer}>
             <ul className={styles.navLinks}>
-              <li><Link href="/" className={styles.logo}>Diesel</Link></li>
+              <li><Link href="/" className={styles.logo}>ARTFY</Link></li>
               <li><Link href="/about">Sobre Nós</Link></li>
               <li><Link href="/shop">Shop</Link></li>
               <li><Link href="/contact">Contato</Link></li>
